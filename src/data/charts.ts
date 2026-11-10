@@ -53,7 +53,7 @@ export const axis1PcdBudgetComparison = {
     { category: 'مغنية', current: 80, target: 70, unit: 'مليار سنتيم' },
     { category: 'بني سنوس', current: 25, target: 45, unit: 'مليار سنتيم' },
     { category: 'العزايل', current: 18, target: 35, unit: 'مليار سنتيم' },
-    { category: 'بني بهدل', current: 15, target: 32, unit: 'مليار سنتيم' },
+    { category: 'بني بحدل', current: 15, target: 32, unit: 'مليار سنتيم' },
   ],
 };
 
@@ -108,7 +108,7 @@ export const axis2InfrastructureCoverage = {
   data: [
     { category: 'مركز بني سنوس', current: 75, target: 95, unit: '%' },
     { category: 'العزايل', current: 60, target: 85, unit: '%' },
-    { category: 'بني بهدل', current: 55, target: 80, unit: '%' },
+    { category: 'بني بحدل', current: 55, target: 80, unit: '%' },
     { category: 'المداشر والقرى المعزولة', current: 35, target: 70, unit: '%' },
   ],
 };
