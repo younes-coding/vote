@@ -90,14 +90,14 @@ export const CommitmentIndexPage: React.FC<CommitmentIndexPageProps> = ({
               onClick={() =>
                 onOpenImageModal(
                   '/assets/campaign-qr-code.jpg',
-                  'رمز الاستجابة السريع (QR Code) للبرنامج الانتخابي وقوائم الحزب'
+                  'رمز الاستجابة السريع (QR Code) للبرنامج الانتخابي و الالتزام'
                 )
               }
               className="cursor-pointer group relative rounded-2xl overflow-hidden border-2 border-slate-200 shadow p-2 bg-white max-w-[200px]"
             >
               <img
                 src="/assets/campaign-qr-code.jpg"
-                alt="رمز الاستجابة السريع للحملة الانتخابية"
+                alt="رمز الاستجابة السريع للبرنامج الانتخابي و الالتزام"
                 className="w-full h-auto object-contain group-hover:scale-105 transition-transform"
                 loading="lazy"
               />
@@ -107,7 +107,7 @@ export const CommitmentIndexPage: React.FC<CommitmentIndexPageProps> = ({
             </div>
 
             <p className="text-xs text-slate-500 mt-3 font-semibold">
-              امسح الرمز بكاميرا هاتفك للوصول المباشر إلى المنصات الرقمية وقوائم المترشحين
+              امسح الرمز بكاميرا هاتفك للوصول المباشر إلى البرنامج الانتخابي والالتزام
             </p>
 
             <div className="w-full pt-4 mt-4 border-t border-slate-100 text-right space-y-2 text-xs text-slate-600">
