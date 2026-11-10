@@ -49,19 +49,19 @@ export const GrandPlanPage: React.FC = () => {
         {grandPlan.pillars.map((pillar, index) => (
           <div
             key={pillar.id}
-            className="bg-white rounded-3xl p-6 sm:p-7 border-2 border-slate-200/90 hover:border-emerald-500/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between text-right relative overflow-hidden group"
+            className="bg-white rounded-3xl p-6 sm:p-7 border-2 border-slate-200/90 hover:border-emerald-500/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between text-right relative group"
           >
-            {/* مؤشر ترقيم خلفي شفاف */}
-            <div className="absolute top-2 left-3 text-7xl font-black text-slate-100 select-none pointer-events-none group-hover:text-emerald-50 transition-colors">
-              {index + 1}
-            </div>
-
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0">
-                  {getPillarIcon(pillar.icon)}
+                <div className="flex items-center gap-3">
+                  <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0">
+                    {getPillarIcon(pillar.icon)}
+                  </div>
+                  <span className="w-8 h-8 rounded-xl bg-emerald-700 text-white font-mono font-black text-sm flex items-center justify-center shadow-xs">
+                    {index + 1}
+                  </span>
                 </div>
-                <span className="bg-slate-100 text-slate-700 text-xs font-black px-3 py-1 rounded-full">
+                <span className="bg-slate-100 text-slate-700 text-xs font-black px-3 py-1.5 rounded-full border border-slate-200">
                   {pillar.badgeText}
                 </span>
               </div>
