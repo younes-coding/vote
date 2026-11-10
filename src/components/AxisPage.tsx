@@ -41,14 +41,14 @@ export const AxisPage: React.FC<AxisPageProps> = ({ axis }) => {
               currentLabel={axis1PcdBudgetComparison.currentLabel}
               targetLabel={axis1PcdBudgetComparison.targetLabel}
               data={axis1PcdBudgetComparison.data}
-              height={290}
+              height={350}
             />
             <DonutPieChart
               title={axis1ProvincialBudgetDistribution.title}
               subtitle={axis1ProvincialBudgetDistribution.subtitle}
               totalAmount={axis1ProvincialBudgetDistribution.totalAmount}
               data={axis1ProvincialBudgetDistribution.data}
-              height={280}
+              height={310}
             />
           </>
         );
@@ -63,7 +63,7 @@ export const AxisPage: React.FC<AxisPageProps> = ({ axis }) => {
               currentLabel={axis2InfrastructureCoverage.currentLabel}
               targetLabel={axis2InfrastructureCoverage.targetLabel}
               data={axis2InfrastructureCoverage.data}
-              height={290}
+              height={350}
             />
             <MultiLineChart
               title={axis2AgriculturalProductivityGrowth.title}
@@ -76,7 +76,7 @@ export const AxisPage: React.FC<AxisPageProps> = ({ axis }) => {
               line2Label={axis2AgriculturalProductivityGrowth.line2Label}
               line2Color="#2563eb"
               data={axis2AgriculturalProductivityGrowth.data}
-              height={280}
+              height={330}
             />
           </>
         );
@@ -88,7 +88,7 @@ export const AxisPage: React.FC<AxisPageProps> = ({ axis }) => {
               title={axis3YouthSupportDistribution.title}
               subtitle={axis3YouthSupportDistribution.subtitle}
               data={axis3YouthSupportDistribution.data}
-              height={270}
+              height={310}
             />
             <GroupedBarChart
               title={axis3SportsFacilities.title}
@@ -97,7 +97,7 @@ export const AxisPage: React.FC<AxisPageProps> = ({ axis }) => {
               currentLabel={axis3SportsFacilities.currentLabel}
               targetLabel={axis3SportsFacilities.targetLabel}
               data={axis3SportsFacilities.data}
-              height={280}
+              height={340}
             />
           </>
         );
@@ -116,7 +116,7 @@ export const AxisPage: React.FC<AxisPageProps> = ({ axis }) => {
               line2Label={axis4TourismVsEcology.line2Label}
               line2Color="#ea580c"
               data={axis4TourismVsEcology.data}
-              height={320}
+              height={340}
             />
           </>
         );
@@ -131,13 +131,13 @@ export const AxisPage: React.FC<AxisPageProps> = ({ axis }) => {
               currentLabel={axis5SchoolsModernization.currentLabel}
               targetLabel={axis5SchoolsModernization.targetLabel}
               data={axis5SchoolsModernization.data}
-              height={290}
+              height={350}
             />
             <DonutPieChart
               title={axis5SocialFundDistribution.title}
               subtitle={axis5SocialFundDistribution.subtitle}
               data={axis5SocialFundDistribution.data}
-              height={280}
+              height={310}
             />
           </>
         );
