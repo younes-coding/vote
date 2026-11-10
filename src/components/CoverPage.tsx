@@ -1,6 +1,6 @@
 import React from 'react';
 import { BOOKLET_CONTENT } from '../data/content';
-import { ArrowLeft, CheckCircle2, ChevronDown, Sparkles } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, ChevronDown, Maximize2, Sparkles } from 'lucide-react';
 
 interface CoverPageProps {
   onStartReading: () => void;
@@ -14,8 +14,8 @@ export const CoverPage: React.FC<CoverPageProps> = ({
   const { campaignInfo } = BOOKLET_CONTENT;
 
   return (
-    <section className="booklet-page min-h-[calc(100vh-5rem)] flex flex-col justify-between py-6 px-4 sm:px-8 max-w-6xl mx-auto">
-      {/* رأس الصفحة العلوية للغلاف */}
+    <section className="booklet-page min-h-[calc(100vh-5rem)] flex flex-col justify-between py-6 px-4 sm:px-8 max-w-6xl mx-auto pb-32">
+      {/* 1. شريط الرأس العلوي لحزب جبهة المستقبل */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-emerald-100 pb-5">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-2xl bg-emerald-700 text-white flex items-center justify-center font-black text-xl shadow-md border-2 border-emerald-600">
@@ -42,9 +42,54 @@ export const CoverPage: React.FC<CoverPageProps> = ({
         </div>
       </div>
 
-      {/* المحتوى الرئيسي للغلاف */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-6">
-        {/* العمود الأيمن: العناوين والشعارات الرسمية */}
+      {/* 2. صورة الغلاف الرئيسية (COVER) المطلوبة قبل العنوان */}
+      <div className="my-6">
+        <div
+          onClick={() =>
+            onOpenImageModal(
+              '/assets/candidate-speech-hero.jpg',
+              'التجمع الشعبي وعرض البرنامج الانتخابي والتزامات المرشح لعوق محمد'
+            )
+          }
+          className="relative group cursor-pointer rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900 transition-all duration-300 hover:shadow-emerald-900/20"
+        >
+          {/* الصورة البانورامية */}
+          <img
+            src="/assets/candidate-speech-hero.jpg"
+            alt="عرض البرنامج الانتخابي والتزامات المرشح لعوق محمد أمام الحضور"
+            className="w-full h-64 sm:h-80 md:h-[420px] lg:h-[480px] object-cover object-top group-hover:scale-102 transition-transform duration-700"
+            loading="eager"
+          />
+
+          {/* تدرج لوني وظلال لتعزيز قراءة الشارات */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-black/20 to-transparent flex flex-col justify-between p-4 sm:p-6 text-white">
+            <div className="flex items-center justify-between gap-2">
+              <span className="bg-emerald-700/90 backdrop-blur-md text-white font-extrabold text-xs sm:text-sm px-3.5 py-1.5 rounded-full shadow border border-emerald-500/30 flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-emerald-300" />
+                <span>برنامجي الانتخابي والتزاماتي</span>
+              </span>
+
+              <span className="bg-black/50 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
+                <Maximize2 className="w-3.5 h-3.5" />
+                <span>انقر للتكبير</span>
+              </span>
+            </div>
+
+            <div className="space-y-1.5 text-right">
+              <div className="inline-block bg-red-600 text-white text-xs sm:text-sm font-black px-3 py-1 rounded-lg shadow">
+                المرشح رقم 42 • لعوق محمد
+              </div>
+              <p className="text-sm sm:text-base md:text-lg font-bold text-slate-100 drop-shadow-md">
+                «مرافعة من أجل تنمية جبلية شاملة وعدالة في توزيع المشاريع لولاية تلمسان»
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 3. العناوين والشعارات الرسمية بعد صورة الغلاف مباشرة */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-6">
+        {/* العمود الأيمن: العناوين والمحتوى */}
         <div className="lg:col-span-7 flex flex-col items-start text-right">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-100/80 text-emerald-900 text-xs sm:text-sm font-bold mb-3 border border-emerald-200">
             <Sparkles className="w-4 h-4 text-emerald-700" />
@@ -69,7 +114,7 @@ export const CoverPage: React.FC<CoverPageProps> = ({
             </p>
           </div>
 
-          {/* بطاقة مرشح الدائرة المميز لعوق محمد رقم 42 */}
+          {/* بطاقة مرشح الدائرة لعوق محمد رقم 42 */}
           <div className="w-full bg-white rounded-2xl p-4 sm:p-5 border-2 border-emerald-600/30 shadow-md hover:shadow-lg transition-all flex flex-col sm:flex-row items-center gap-4 mb-6">
             <button
               onClick={() =>
@@ -170,7 +215,7 @@ export const CoverPage: React.FC<CoverPageProps> = ({
         </div>
       </div>
 
-      {/* تذييل الغلاف مع مؤشر النزول */}
+      {/* 4. تذييل الغلاف مع مؤشر النزول */}
       <div className="pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-500">
         <div>انتخابات تجديد المجالس الشعبية الولائية - الجزائر 2026</div>
         <button
@@ -184,4 +229,3 @@ export const CoverPage: React.FC<CoverPageProps> = ({
     </section>
   );
 };
-
