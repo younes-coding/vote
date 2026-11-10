@@ -29,7 +29,7 @@ export const TOC_ITEMS: TocItem[] = [
   { id: 4, title: 'المحور 3: دعم وتأهيل الشباب', category: 'المحاور التنموية', icon: 'Sparkles' },
   { id: 5, title: 'المحور 4: السياحة والبيئة', category: 'المحاور التنموية', icon: 'Trees' },
   { id: 6, title: 'المحور 5: التعليم والتماسك الاجتماعي', category: 'المحاور التنموية', icon: 'GraduationCap' },
-  { id: 7, title: 'بيت القصيد: خطتنا الإجرائية الكبرى', category: 'خارطة الطريق', icon: 'Target' },
+  { id: 7, title: 'البيت القصيد: خطتنا الإجرائية الكبرى', category: 'خارطة الطريق', icon: 'Target' },
   { id: 8, title: 'قائمة المترشحين ودليل التصويت', category: 'المسار الانتخابي', icon: 'Vote' },
   { id: 9, title: 'البيان الختامي، عهد مقطوع، واختاروا الأكفأ', category: 'الخاتمة والنداء', icon: 'BookOpen' },
   { id: 10, title: 'مؤشر الالتزام والمتابعة الدورية', category: 'المساءلة والشفافية', icon: 'Activity' },
