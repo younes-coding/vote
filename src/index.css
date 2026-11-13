@@ -101,3 +101,21 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* Styling for Recharts Tooltips across all charts */
+.recharts-tooltip-wrapper {
+  z-index: 100 !important;
+  pointer-events: none !important;
+  outline: none !important;
+  transition: transform 0.12s ease-out !important;
+}
+
+/* On mobile screens (< 768px), center the tooltip within the chart card so it is NEVER clipped */
+@media (max-width: 768px) {
+  .recharts-tooltip-wrapper {
+    top: 45% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    position: absolute !important;
+  }
+}

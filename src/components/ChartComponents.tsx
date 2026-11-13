@@ -26,22 +26,40 @@ import { CHART_COLORS } from '../data/charts';
 const CustomBarTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-slate-900/95 text-white p-3 rounded-xl shadow-xl text-xs sm:text-sm border border-slate-700/60 backdrop-blur-md text-right dir-rtl">
-        <p className="font-bold text-emerald-400 mb-1 border-b border-slate-700 pb-1">{label}</p>
-        {payload.map((entry: any, index: number) => (
-          <div key={`item-${index}`} className="flex items-center justify-between gap-4 py-0.5">
-            <span className="flex items-center gap-1.5">
-              <span
-                className="inline-block w-2.5 h-2.5 rounded-full"
-                style={{ backgroundColor: entry.color }}
-              />
-              <span className="text-slate-300">{entry.name}:</span>
-            </span>
-            <span className="font-extrabold text-white font-mono">
-              {entry.value} {entry.payload.unit || ''}
-            </span>
-          </div>
-        ))}
+      <div
+        dir="rtl"
+        className="bg-slate-950/95 text-white p-3 sm:p-3.5 rounded-2xl shadow-2xl border border-emerald-500/40 backdrop-blur-md text-right w-[260px] sm:w-[280px] max-w-[90vw]"
+      >
+        <div className="flex items-center justify-between border-b border-slate-700/80 pb-1.5 mb-2">
+          <p className="font-black text-emerald-400 text-xs sm:text-sm">{label}</p>
+          <span className="text-[10px] font-bold text-slate-400 bg-slate-800/90 px-1.5 py-0.5 rounded border border-slate-700">
+            مؤشر
+          </span>
+        </div>
+        <div className="space-y-1.5">
+          {payload.map((entry: any, index: number) => (
+            <div
+              key={`item-${index}`}
+              className="flex items-center justify-between gap-2 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/40"
+            >
+              <div className="flex items-center gap-1.5 min-w-0 flex-1">
+                <span
+                  className="w-2.5 h-2.5 rounded-full shrink-0"
+                  style={{ backgroundColor: entry.color || entry.fill }}
+                />
+                <span className="text-slate-100 text-[11px] sm:text-xs font-bold truncate">
+                  {entry.name}
+                </span>
+              </div>
+              <div className="font-black text-amber-300 font-mono text-xs sm:text-sm shrink-0 bg-slate-900/90 px-2 py-0.5 rounded-lg border border-slate-700">
+                {entry.value}
+                <span className="text-[10px] text-slate-300 ms-0.5 font-normal">
+                  {entry.payload?.unit || ''}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
@@ -52,22 +70,40 @@ const CustomBarTooltip = ({ active, payload, label }: any) => {
 const CustomLineTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-slate-900/95 text-white p-3 rounded-xl shadow-xl text-xs sm:text-sm border border-slate-700/60 backdrop-blur-md text-right dir-rtl">
-        <p className="font-bold text-amber-400 mb-1 border-b border-slate-700 pb-1">سنة {label}</p>
-        {payload.map((entry: any, index: number) => (
-          <div key={`item-${index}`} className="flex items-center justify-between gap-4 py-0.5">
-            <span className="flex items-center gap-1.5">
-              <span
-                className="inline-block w-2.5 h-2.5 rounded-full"
-                style={{ backgroundColor: entry.stroke }}
-              />
-              <span className="text-slate-300">{entry.name}:</span>
-            </span>
-            <span className="font-extrabold text-white font-mono">
-              {entry.value}
-            </span>
-          </div>
-        ))}
+      <div
+        dir="rtl"
+        className="bg-slate-950/95 text-white p-3 sm:p-3.5 rounded-2xl shadow-2xl border border-amber-500/40 backdrop-blur-md text-right w-[260px] sm:w-[280px] max-w-[90vw]"
+      >
+        <div className="flex items-center justify-between border-b border-slate-700/80 pb-1.5 mb-2">
+          <p className="font-black text-amber-400 text-xs sm:text-sm">سنة {label}</p>
+          <span className="text-[10px] font-bold text-slate-400 bg-slate-800/90 px-1.5 py-0.5 rounded border border-slate-700">
+            تطور سنوي
+          </span>
+        </div>
+        <div className="space-y-1.5">
+          {payload.map((entry: any, index: number) => (
+            <div
+              key={`item-${index}`}
+              className="flex items-center justify-between gap-2 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/40"
+            >
+              <div className="flex items-center gap-1.5 min-w-0 flex-1">
+                <span
+                  className="w-2.5 h-2.5 rounded-full shrink-0"
+                  style={{ backgroundColor: entry.stroke || entry.color }}
+                />
+                <span className="text-slate-100 text-[11px] sm:text-xs font-bold truncate">
+                  {entry.name}
+                </span>
+              </div>
+              <div className="font-black text-emerald-300 font-mono text-xs sm:text-sm shrink-0 bg-slate-900/90 px-2 py-0.5 rounded-lg border border-slate-700">
+                {entry.value}
+                <span className="text-[10px] text-slate-300 ms-0.5 font-normal">
+                  {entry.payload?.unit || '%'}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
@@ -79,18 +115,34 @@ const CustomPieTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     const data = payload[0];
     return (
-      <div className="bg-slate-900/95 text-white p-3 rounded-xl shadow-xl text-xs sm:text-sm border border-slate-700/60 backdrop-blur-md text-right dir-rtl">
-        <p className="font-bold text-white mb-1">{data.name}</p>
-        <div className="flex items-center justify-between gap-4 py-0.5">
-          <span className="text-emerald-400">النسبة المئوية:</span>
-          <span className="font-extrabold font-mono text-white">{data.value}%</span>
+      <div
+        dir="rtl"
+        className="bg-slate-950/95 text-white p-3 sm:p-3.5 rounded-2xl shadow-2xl border border-emerald-500/40 backdrop-blur-md text-right w-[260px] sm:w-[280px] max-w-[90vw]"
+      >
+        <div className="flex items-center justify-between border-b border-slate-700/80 pb-1.5 mb-2">
+          <p className="font-black text-emerald-400 text-xs sm:text-sm truncate">
+            {data.name}
+          </p>
+          <span className="text-[10px] font-bold text-slate-400 bg-slate-800/90 px-1.5 py-0.5 rounded border border-slate-700">
+            حصة
+          </span>
         </div>
-        {data.payload.amount && (
-          <div className="flex items-center justify-between gap-4 py-0.5 text-slate-300">
-            <span>القيمة المقدرة:</span>
-            <span className="font-bold text-amber-400">{data.payload.amount}</span>
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between gap-2 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/40">
+            <span className="text-slate-100 text-[11px] sm:text-xs font-bold">النسبة المئوية</span>
+            <span className="font-black text-amber-300 font-mono text-xs sm:text-sm bg-slate-900/90 px-2 py-0.5 rounded-lg border border-slate-700">
+              {data.value}%
+            </span>
           </div>
-        )}
+          {data.payload.amount && (
+            <div className="flex items-center justify-between gap-2 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/40">
+              <span className="text-slate-100 text-[11px] sm:text-xs font-bold">الغلاف المالي</span>
+              <span className="font-black text-emerald-300 font-mono text-xs sm:text-sm bg-slate-900/90 px-2 py-0.5 rounded-lg border border-slate-700">
+                {data.payload.amount}
+              </span>
+            </div>
+          )}
+        </div>
       </div>
     );
   }
@@ -204,7 +256,11 @@ export const GroupedBarChart: React.FC<GroupedBarChartProps> = ({
                   : undefined
               }
             />
-            <Tooltip content={<CustomBarTooltip />} />
+            <Tooltip
+              content={<CustomBarTooltip />}
+              allowEscapeViewBox={{ x: false, y: false }}
+              wrapperStyle={{ zIndex: 100, pointerEvents: 'none' }}
+            />
             <Legend
               verticalAlign="top"
               align="center"
@@ -333,7 +389,11 @@ export const DonutPieChart: React.FC<DonutPieChartProps> = ({
                 <Cell key={`cell-${index}`} fill={entry.color} />
               ))}
             </Pie>
-            <Tooltip content={<CustomPieTooltip />} />
+            <Tooltip
+              content={<CustomPieTooltip />}
+              allowEscapeViewBox={{ x: false, y: false }}
+              wrapperStyle={{ zIndex: 100, pointerEvents: 'none' }}
+            />
           </PieChart>
         </ResponsiveContainer>
         {totalAmount && (
@@ -429,7 +489,11 @@ export const MultiLineChart: React.FC<MultiLineChartProps> = ({
                   : undefined
               }
             />
-            <Tooltip content={<CustomLineTooltip />} />
+            <Tooltip
+              content={<CustomLineTooltip />}
+              allowEscapeViewBox={{ x: false, y: false }}
+              wrapperStyle={{ zIndex: 100, pointerEvents: 'none' }}
+            />
             <Legend
               verticalAlign="top"
               align="center"
