@@ -102,22 +102,22 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* تبديل وضع القراءة */}
           <button
             onClick={onToggleReadingMode}
-            className="p-2 sm:px-3 sm:py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm border border-slate-200 flex items-center gap-1.5 transition-all cursor-pointer"
+            className="p-2 sm:px-3 sm:py-2 rounded-xl bg-slate-100 hover:bg-emerald-50 hover:text-emerald-800 text-slate-700 font-bold text-xs sm:text-sm border border-slate-200 flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs"
             title={
               readingMode === 'flipbook'
-                ? 'التبديل إلى وضع القراءة المستمرة (تمرير كامل)'
+                ? 'التبديل إلى وضع العرض المستمر (تمرير كامل)'
                 : 'التبديل إلى وضع الكتيب (تقليب الصفحات)'
             }
           >
             {readingMode === 'flipbook' ? (
               <>
                 <FileText className="w-4 h-4 text-emerald-600" />
-                <span className="hidden md:inline">عرض مستمر</span>
+                <span className="hidden sm:inline">عرض مستمر</span>
               </>
             ) : (
               <>
                 <BookOpen className="w-4 h-4 text-emerald-600" />
-                <span className="hidden md:inline">وضع الكتيب</span>
+                <span className="hidden sm:inline">وضع الكتيب</span>
               </>
             )}
           </button>

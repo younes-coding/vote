@@ -14,7 +14,7 @@ import { CommitmentIndexPage } from './components/CommitmentIndexPage';
 
 export function App() {
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const [readingMode, setReadingMode] = useState<'flipbook' | 'continuous'>('flipbook');
+  const [readingMode, setReadingMode] = useState<'flipbook' | 'continuous'>('continuous');
   const [isTocOpen, setIsTocOpen] = useState<boolean>(false);
   const [modalImage, setModalImage] = useState<{
     isOpen: boolean;
@@ -29,6 +29,33 @@ export function App() {
   const totalPages = 11;
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
+
+  // Sync current section with scroll position in continuous mode
+  useEffect(() => {
+    if (readingMode !== 'continuous') return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const pageIndex = Number(entry.target.getAttribute('data-page-index'));
+            if (!isNaN(pageIndex)) {
+              setCurrentPage(pageIndex);
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '-10% 0px -60% 0px',
+      }
+    );
+
+    const sections = document.querySelectorAll('[data-page-index]');
+    sections.forEach((sec) => observer.observe(sec));
+
+    return () => observer.disconnect();
+  }, [readingMode]);
 
   // Navigate to next page
   const handleNextPage = () => {
@@ -181,9 +208,22 @@ export function App() {
         currentPage={currentPage}
         totalPages={totalPages}
         readingMode={readingMode}
-        onToggleReadingMode={() =>
-          setReadingMode((prev) => (prev === 'flipbook' ? 'continuous' : 'flipbook'))
-        }
+        onToggleReadingMode={() => {
+          setReadingMode((prev) => {
+            const nextMode = prev === 'flipbook' ? 'continuous' : 'flipbook';
+            if (nextMode === 'continuous') {
+              setTimeout(() => {
+                const element = document.getElementById(`section-page-${currentPage}`);
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }, 60);
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            return nextMode;
+          });
+        }}
         onOpenToc={() => setIsTocOpen(true)}
         onPrevPage={handlePrevPage}
         onNextPage={handleNextPage}
@@ -211,7 +251,8 @@ export function App() {
               <div
                 key={idx}
                 id={`section-page-${idx}`}
-                className="relative pb-12 border-b border-slate-200/80 last:border-b-0 print-page-break"
+                data-page-index={idx}
+                className="relative pb-12 border-b border-slate-200/80 last:border-b-0 print-page-break scroll-mt-20"
               >
                 {/* شارة رقم الصفحة في العرض المستمر */}
                 <div className="max-w-6xl mx-auto px-4 mb-2 flex items-center justify-between text-xs text-slate-600 no-print">
